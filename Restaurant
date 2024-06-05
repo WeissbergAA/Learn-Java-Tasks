@@ -1,0 +1,86 @@
+package org.example;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Menu {
+    private List<Dish> dishes;
+
+    public Menu() {
+        this.dishes = new ArrayList<>();
+    }
+
+    public void addDish(Dish dish) {
+        dishes.add(dish);
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+}
+
+class Dish {
+    private String name;
+    private double price;
+
+    public Dish(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+
+class Order {
+    private List<Dish> dishes; // типы переменные объекты , инкапсуляция
+
+    public Order() { // конструктор про классы, поля , методы, характеристики и когда вызываются, модификаторы доступа, н
+        this.dishes = new ArrayList<>();
+    }
+
+    public void addDish(Dish dish) {
+        dishes.add(dish);
+    }
+
+    public double getTotalPrice() {
+        return dishes.stream().mapToDouble(Dish::getPrice).sum(); //пояснение
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+}
+
+public class Restaurant {
+    public static void main(String[] args) {
+        Menu menu = new Menu();
+
+        Dish dish1 = new Dish("Карбонара", 450.30);
+        Dish dish2 = new Dish("Том ям", 860);
+
+        menu.addDish(dish1);
+        menu.addDish(dish2);
+
+        Order order = new Order();
+        order.addDish(dish1);
+        order.addDish(dish2);
+
+        System.out.println("Список блюд в меню:");
+        for (Dish dish : menu.getDishes()) {
+            System.out.println(dish.getName() + " - ₽" + dish.getPrice());
+        }
+
+        System.out.println("\n Заказ:");
+        for (Dish dish : order.getDishes()) {
+            System.out.println(dish.getName() + " - ₽" + dish.getPrice());
+        }
+
+        System.out.println("\n Общая стоимость заказа: ₽" + order.getTotalPrice());
+    }
+}
