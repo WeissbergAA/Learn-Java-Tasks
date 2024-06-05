@@ -2,47 +2,46 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Calculator {
-    public static void main (String[] args) {
-        Scanner scanner = new Scanner(System.in); // создаем обьект из класса Сканнер и присваивем ему имя(иницилизируем метод)
+public class Calculator { // Объявление класса Calculator
+    public static void main (String[] args) { //
+        Scanner scanner = new Scanner(System.in); // Создание объекта Scanner для ввода данных с клавиатуры
 
-        System.out.println("Введите первое число:");
-        double num1 = scanner.nextDouble(); //задаем тип с плавающей точкой это примитивный тип данных(примитв)
+        System.out.println("Введите первое число:"); // Вывод сообщения на консоль
+        double num1 = scanner.nextDouble(); // Считывание первого числа с клавиатуры и сохранение в переменную num1
 
-        System.out.println("Выберите операцию (+, -, *, /):"); //задаем тип char для символов это тоже примитивный тип
-        char operator = scanner.next().charAt(0);
+        System.out.println("Выберите операцию (+, -, *, /):"); // Вывод сообщения на консоль
+        char operator = scanner.next().charAt(0); // Считывание оператора (+, -, *, /) с клавиатуры и сохранение первого символа в переменную operator
 
-        System.out.println("Введите второе число:");
-        double num2 = scanner.nextDouble();
+        System.out.println("Введите второе число:"); // Вывод сообщения на консоль
+        double num2 = scanner.nextDouble(); // Считывание второго числа с клавиатуры и сохранение в переменную num2
 
+        double result ; // Объявление переменной result для хранения результата вычислений
 
-        double result ; //задаем тип с плавающей точкой и имя результат который будет использоваться для вывода результата
-
-        switch (operator) { //switch case break
-            case '+':
-                result = num1 + num2;
-                break; //
-            case '-':
-                result = num1 - num2;
-                break;
-            case '*':
-                result = num1 * num2;
-                break;
-            case '/':
-                if (num2 != 0) {
-                    result = num1 / num2;
-                } else {
-                    System.out.println("Ошибка: деление на ноль.");
-                    return;
+        switch (operator) { // Начало блока switch-case для выполнения различных операций в зависимости от оператора
+            case '+': // Если оператор '+'
+                result = num1 + num2; // Выполнение сложения и сохранение результата в переменную result
+                break; // Завершение выполнения операции и выход из switch-case
+            case '-': // Если оператор '-'
+                result = num1 - num2; // Выполнение вычитания и сохранение результата в переменную result
+                break; // Завершение выполнения операции и выход из switch-case
+            case '*': // Если оператор '*'
+                result = num1 * num2; // Выполнение умножения и сохранение результата в переменную result
+                break; // Завершение выполнения операции и выход из switch-case
+            case '/': // Если оператор '/'
+                if (num2 != 0) { // Проверка деления на ноль
+                    result = num1 / num2; // Выполнение деления и сохранение результата в переменную result
+                } else { // Если деление на ноль
+                    System.out.println("Ошибка: деление на ноль."); // Вывод сообщения об ошибке
+                    return; // Завершение выполнения программы
                 }
-                break;
-            default: // почему deafauit, значение по умолчанию для переменных и полей
-                System.out.println("Неверная операция.");
-                return; // куда вернет и что это такое
+                break; // Завершение выполнения операции и выход из switch-case
+            default: // Если оператор не соответствует ни одному из case
+                System.out.println("Неверная операция."); // Вывод сообщения об ошибке
+                return; // Завершение выполнения программы
         }
 
-        System.out.println("Результат: " + result);
+        System.out.println("Результат: " + result); // Вывод результата вычислений на консоль
 
-        scanner.close();
+        scanner.close(); // Закрытие объекта Scanner
     }
 }
