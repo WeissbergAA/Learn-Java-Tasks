@@ -1,0 +1,48 @@
+package org.example;
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main (String[] args) {
+        Scanner scanner = new Scanner(System.in); // создаем обьект из класса Сканнер и присваивем ему имя(иницилизируем метод)
+
+        System.out.println("Введите первое число:");
+        double num1 = scanner.nextDouble(); //задаем тип с плавающей точкой это примитивный тип данных(примитв)
+
+        System.out.println("Выберите операцию (+, -, *, /):"); //задаем тип char для символов это тоже примитивный тип
+        char operator = scanner.next().charAt(0);
+
+        System.out.println("Введите второе число:");
+        double num2 = scanner.nextDouble();
+
+
+        double result ; //задаем тип с плавающей точкой и имя результат который будет использоваться для вывода результата
+
+        switch (operator) { //switch case break
+            case '+':
+                result = num1 + num2;
+                break; //
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    System.out.println("Ошибка: деление на ноль.");
+                    return;
+                }
+                break;
+            default: // почему deafauit, значение по умолчанию для переменных и полей
+                System.out.println("Неверная операция.");
+                return; // куда вернет и что это такое
+        }
+
+        System.out.println("Результат: " + result);
+
+        scanner.close();
+    }
+}
