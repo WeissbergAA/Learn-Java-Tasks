@@ -46,3 +46,5 @@ public class Calculator { // Объявление класса Calculator
         scanner.close(); // Закрытие объекта Scanner
     }
 }
+
+/* Задача: написать простой калькулятор */
