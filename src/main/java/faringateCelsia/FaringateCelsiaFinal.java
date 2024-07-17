@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class FgCeTryCatch {
+public class FaringateCelsiaFinal {
     public static void main(String[] args)  {
         Scanner scanner = new Scanner(System.in); // Создание объекта Scanner для считывания ввода пользователя
 
