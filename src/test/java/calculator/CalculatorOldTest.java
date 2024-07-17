@@ -5,7 +5,7 @@ import static org.testng.Assert.assertThrows;
 
 
 
-public class CalculatorUnit // ниже тесты с использованием TestNG
+public class CalculatorOldTest // ниже тесты с использованием TestNG
 {
     @Test
     public void testPlus() {
