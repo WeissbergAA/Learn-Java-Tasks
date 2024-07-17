@@ -1,9 +1,15 @@
-import FaringateCelsia.FaringateCelsia;
+package faringate;
+
+import faringateCelsia.FaringateCelsiaFinal;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
+
+@Feature("Проверка работы программы конвертации Цельия/Фарингейт")
 public class FaringateNewTest {
 
     @DataProvider(name = "temperatureDataCelsia")
@@ -25,14 +31,16 @@ public class FaringateNewTest {
     }
 
     @Test(dataProvider = "temperatureDataCelsia")
+    @Story("Проверка перевода Цельсий в Фарингейт")
     public void testCelsiusToFahrenheit(double celsius, double expectedFahrenheit) {
-        double actualFahrenheit = FaringateCelsia.celsiusToFahrenheit(celsius);
+        double actualFahrenheit = FaringateCelsiaFinal.celsiusToFahrenheit(celsius);
         Assert.assertEquals(actualFahrenheit, expectedFahrenheit, 0.1);
     }
 
     @Test(dataProvider = "temperatureDataFahrenheit")
+    @Story("Проверка перевода Фарингейт в Цельсий")
     public void testFahrenheitToCelsius(double fahrenheit, double expectedCelsius) {
-        double actualCelsius = FaringateCelsia.fahrenheitToCelsius(fahrenheit);
+        double actualCelsius = FaringateCelsiaFinal.fahrenheitToCelsius(fahrenheit);
         Assert.assertEquals(actualCelsius, expectedCelsius, 0.1);
     }
 }
