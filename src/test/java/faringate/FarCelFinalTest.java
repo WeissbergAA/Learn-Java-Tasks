@@ -25,7 +25,6 @@ public class FarCelFinalTest {
     @Test(dataProvider = "temperatureData")
     @Story("Проверка перевода температур")
     public void testTemperatureConversion(String conversionType, double input, double expected) {
-        FaringateCelsiaFinal FaringateCelsia;
         if (conversionType.equals("cToF")) {
             double actual = FaringateCelsiaFinal.celsiusToFahrenheit(input);
             Assert.assertEquals(actual, expected, 0.1);
