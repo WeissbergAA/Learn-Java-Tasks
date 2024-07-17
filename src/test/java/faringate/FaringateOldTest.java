@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import static org.junit.Assert.assertEquals;
 
 
-public class FaringateUnit {
+public class FaringateOldTest {
 
     @Test
     public void testCelsiusToFahrenheit() { // тест для минимальных значений
