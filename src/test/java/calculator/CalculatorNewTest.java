@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertThrows;
 
-public class CalculatorUnitParam {
+public class CalculatorNewTest {
 
     @Test(dataProvider = "calculationData")
     public void testCalculation(double num1, char operator, double num2, double expected) {
