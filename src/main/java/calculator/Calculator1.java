@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Calculator_v1 { // Объявление класса Calculator
+public class Calculator1 { // Объявление класса Calculator
     public static void main(String[] args) { // Точка входа в программу
         Scanner scanner = new Scanner(System.in); // Создание объекта Scanner для ввода данных с клавиатуры
 
