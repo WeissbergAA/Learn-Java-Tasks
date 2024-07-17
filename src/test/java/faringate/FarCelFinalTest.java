@@ -1,6 +1,6 @@
 package faringate;
 
-import faringateCelsia.FaringateCelsia;
+import faringateCelsia.FaringateCelsiaFinal;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.Assert;
@@ -25,11 +25,12 @@ public class FarCelFinalTest {
     @Test(dataProvider = "temperatureData")
     @Story("Проверка перевода температур")
     public void testTemperatureConversion(String conversionType, double input, double expected) {
+        FaringateCelsiaFinal FaringateCelsia;
         if (conversionType.equals("cToF")) {
-            double actual = FaringateCelsia.celsiusToFahrenheit(input);
+            double actual = FaringateCelsiaFinal.celsiusToFahrenheit(input);
             Assert.assertEquals(actual, expected, 0.1);
         } else if (conversionType.equals("fToC")) {
-            double actual = FaringateCelsia.fahrenheitToCelsius(input);
+            double actual = FaringateCelsiaFinal.fahrenheitToCelsius(input);
             Assert.assertEquals(actual, expected, 0.1);
         }
     }
