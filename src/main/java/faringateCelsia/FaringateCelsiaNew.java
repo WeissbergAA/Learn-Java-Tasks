@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class FaringateCelsia {
+public class FaringateCelsiaNew {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in); // Создаем объект Scanner для считывания ввода пользователя
         System.out.println("Выберите тип преобразования:"); // Вывод сообщения пользователю
