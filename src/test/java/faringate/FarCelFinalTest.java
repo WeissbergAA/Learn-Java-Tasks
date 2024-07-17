@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @Feature("Проверка работы программы конвертации Цельсий/Фарингейт")
-public class FarCelFinal {
+public class FarCelFinalTest {
 
     @DataProvider(name = "temperatureData")
     public Object[][] temperatureData() {
