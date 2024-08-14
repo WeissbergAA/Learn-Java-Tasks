@@ -1,0 +1,113 @@
+package morze;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class RussianToMorze {
+
+    // Создание HashMap для сопоставления русского алфавита с кодами Морзе
+    private static final HashMap<Character, String> RUSSIAN_TO_MORSE = new HashMap<Character, String>();
+    private static final HashMap<String, Character> MORSE_TO_RUSSIAN = new HashMap<String, Character>();
+
+    static {
+
+        RUSSIAN_TO_MORSE.put('А', ".-");
+        RUSSIAN_TO_MORSE.put('Б', "-...");
+        RUSSIAN_TO_MORSE.put('В', ".--");
+        RUSSIAN_TO_MORSE.put('Г', "--.");
+        RUSSIAN_TO_MORSE.put('Д', "-..");
+        RUSSIAN_TO_MORSE.put('Е', ".");
+        RUSSIAN_TO_MORSE.put('Ё', ".");
+        RUSSIAN_TO_MORSE.put('Ж', "...-");
+        RUSSIAN_TO_MORSE.put('З', "--..");
+        RUSSIAN_TO_MORSE.put('И', "..");
+        RUSSIAN_TO_MORSE.put('Й', ".---");
+        RUSSIAN_TO_MORSE.put('К', "-.-");
+        RUSSIAN_TO_MORSE.put('Л', ".-..");
+        RUSSIAN_TO_MORSE.put('М', "--");
+        RUSSIAN_TO_MORSE.put('Н', "-.");
+        RUSSIAN_TO_MORSE.put('О', "---");
+        RUSSIAN_TO_MORSE.put('П', ".--.");
+        RUSSIAN_TO_MORSE.put('Р', ".-.");
+        RUSSIAN_TO_MORSE.put('С', "...");
+        RUSSIAN_TO_MORSE.put('Т', "-");
+        RUSSIAN_TO_MORSE.put('У', "..-");
+        RUSSIAN_TO_MORSE.put('Ф', "..-.");
+        RUSSIAN_TO_MORSE.put('Х', "....");
+        RUSSIAN_TO_MORSE.put('Ц', "-.-.");
+        RUSSIAN_TO_MORSE.put('Ч', "---.");
+        RUSSIAN_TO_MORSE.put('Ш', "----");
+        RUSSIAN_TO_MORSE.put('Щ', "--.-");
+        RUSSIAN_TO_MORSE.put('Ъ', ".--.-.");
+        RUSSIAN_TO_MORSE.put('Ы', "-.--");
+        RUSSIAN_TO_MORSE.put('Ь', "-..-");
+        RUSSIAN_TO_MORSE.put('Э', "..-..");
+        RUSSIAN_TO_MORSE.put('Ю', "..--");
+        RUSSIAN_TO_MORSE.put('Я', ".-.-");
+        RUSSIAN_TO_MORSE.put(' ', "/");
+
+        // Цикл для заполнение HashMap для преобразования
+        for (int i = 0; i < RUSSIAN_TO_MORSE.size(); i++) {
+            Map.Entry<Character, String> entry = (Map.Entry<Character, String>) RUSSIAN_TO_MORSE.entrySet().toArray()[i];
+            MORSE_TO_RUSSIAN.put(entry.getValue(), entry.getKey());
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите тип преобразования:");
+        System.out.println("1. Русский в Морзе");
+        System.out.println("2. Морзе в Русский");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice == 1) {
+            System.out.println("Введите текст на русском языке:");
+            String russianText = scanner.nextLine();
+            String morseText = toMorse(russianText);
+            System.out.println("Текст в Морзе: " + morseText);
+        } else if (choice == 2) {
+            System.out.println("Введите текст на Морзе:");
+            String morseText = scanner.nextLine();
+            String russianText = toRussian(morseText);
+            System.out.println("Текст на русском: " + russianText);
+        } else {
+            System.out.println("Неверный выбор. Пожалуйста, выберите 1 или 2.");
+        }
+    }
+
+    public static String toMorse(String russianText) {
+        String morseText = " ";
+        // Используем цикл for для перебора строки по индексам
+        char[] characters = russianText.toUpperCase().toCharArray();
+        for (int i = 0; i < characters.length; i++) {
+            char character = characters[i];
+            String morseCode = RUSSIAN_TO_MORSE.get(character); // .get получаем значения из ключа в HashMap
+            if (morseCode != null) {
+                morseText += morseCode + " "; // используем конкатенацию строк
+            }
+        }
+        return morseText;
+    }
+
+    public static String toRussian(String morseText) {
+        String russianText = " ";
+        String[] words = morseText.split(" / ");   // .split разделяем строку на части
+        // Используем цикл for для перебора массива слов по индексам
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            String[] characters = word.split(" "); // .split разделяем строку на части
+            // Используем цикл for для перебора массива символов по индексам
+            for (int j = 0; j < characters.length; j++) {
+                String character = characters[j];
+                Character russianChar = MORSE_TO_RUSSIAN.get(character); //.get получаем значения из ключа в HashMap
+                if (russianChar != null) {
+                    russianText += russianChar; // используем конкатенацию строк
+                }
+            }
+            russianText += ' ';
+        }
+        return russianText;
+    }
+}
